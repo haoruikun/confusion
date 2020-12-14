@@ -27,7 +27,7 @@ class Dishdetail extends Component {
       return (
         <li key={com.id}>
           <div>{com.comment}</div>
-          <small>-- {com.author}</small>
+          <small>-- {com.author}, {com.date}</small>
         </li>
       )
     })
