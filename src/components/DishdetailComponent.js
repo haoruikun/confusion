@@ -26,11 +26,11 @@ class CommentForm extends Component {
   }
 
   handleSubmit(values){
-    if (values.rating == undefined) {
+    if (values.rating === undefined) {
       alert('Please select your rating before submit');
       return false;
     } else {
-      this.props.addComment(this.props.dishId, values.rating, values.name, values.comment);
+      this.props.postComment(this.props.dishId, values.rating, values.name, values.comment);
       alert('Your comment is successfully added!');
       this.toggleModal();
       return false;
@@ -103,7 +103,7 @@ class CommentForm extends Component {
     )
   }
 
-  function RenderComments({comments, addComment, dishId}) {
+  function RenderComments({comments, postComment, dishId}) {
     var comm = comments.map((com) => {
       return (
         <li key={com.id}>
@@ -119,7 +119,7 @@ class CommentForm extends Component {
         <ul class="list-unstyled">
           {comm}
         </ul>
-        <CommentForm dishId={dishId} addComment={addComment} />
+        <CommentForm dishId={dishId} postComment={postComment} />
       </div>
     )
   }
@@ -158,7 +158,7 @@ class CommentForm extends Component {
           <div className="row">
             <RenderDish dish={props.dish} />
             <RenderComments comments={props.comments}
-              addComment={props.addComment}
+              postComment={props.postComment}
               dishId={props.dish.id} />
           </div>
         </div>
